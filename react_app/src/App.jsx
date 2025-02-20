@@ -8,15 +8,20 @@ const App = () => {
   const manh = "Manh";
   const age = 25;
   const data = {
-    addres: "Hanoi",
+    address: "Hanoi",
     country: "VN"
+  }
+
+  const addNewTodo = (name) => {
+    alert(`call me  ${name}`)
   }
 
   return (
     <>
       <div className="todo-container">
         <div className="todo-title">Todo list</div>
-        <TodoNew />
+        <TodoNew
+          addNewTodo={addNewTodo} />
         <TodoData
           name={manh}
           age={age}

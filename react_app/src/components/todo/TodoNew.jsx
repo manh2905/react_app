@@ -1,4 +1,7 @@
-const TodoNew = () => {
+const TodoNew = (props) => {
+    const { addNewTodo } = props;
+
+    // addNewTodo("manh");
     return (
         <div className='todo-add'>
             <input type="text" />

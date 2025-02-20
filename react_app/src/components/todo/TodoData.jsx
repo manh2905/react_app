@@ -1,6 +1,6 @@
 const TodoData = (props) => {
 
-    console.log(props);
+
     const { name, age, data } = props;
     const { addres, country } = data;
     return (
