@@ -11,12 +11,7 @@ const App = () => {
     { id: 2, name: "play game" }
   ])
 
-  const manh = "Manh";
-  const age = 25;
-  const data = {
-    address: "Hanoi",
-    country: "VN"
-  }
+
 
   const addNewTodo = (name) => {
     const newTodo = {
@@ -38,9 +33,6 @@ const App = () => {
         <TodoNew
           addNewTodo={addNewTodo} />
         <TodoData
-          name={manh}
-          age={age}
-          data={data}
           todoList={todoList}
         />
         <div className="todo-image">
