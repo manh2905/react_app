@@ -25,7 +25,9 @@
     margin-top: 20px;
     gap: 15px;
     background-color: azure;
-    height: 200px;
+    min-height: 200px;
+    max-height: 400px;
+    overflow: auto;
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 15px;

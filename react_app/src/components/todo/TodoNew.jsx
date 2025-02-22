@@ -3,11 +3,12 @@ import { useState } from "react";
 const TodoNew = (props) => {
     const { addNewTodo } = props;
 
-    const [valIn, setValIn] = useState("manh")
+    const [valIn, setValIn] = useState("")
 
     // addNewTodo("manh");
     const handleClick = () => {
         console.log(valIn);
+        addNewTodo(valIn);
     }
     const handleOnchange = (name) => {
         setValIn(name);
