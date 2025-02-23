@@ -1,14 +1,14 @@
 import './components/todo/todo.css'
 import TodoData from './components/todo/TodoData';
 import TodoNew from './components/todo/TodoNew';
-import Reactimage from './assets/react.svg'
+import Reactimage from './assets/react.svg';
 import { useState } from 'react';
 
 const App = () => {
 
   const [todoList, setTodoList] = useState([
-    { id: 1, name: "learn react" },
-    { id: 2, name: "play game" }
+    // { id: 1, name: "learn react" },
+    // { id: 2, name: "play game" }
   ])
 
 
@@ -32,12 +32,21 @@ const App = () => {
         <div className="todo-title">Todo list</div>
         <TodoNew
           addNewTodo={addNewTodo} />
-        <TodoData
-          todoList={todoList}
-        />
-        <div className="todo-image">
-          <img src={Reactimage} className='logo' />
-        </div>
+        {
+          todoList.length > 0 ?
+            <TodoData
+              todoList={todoList}
+            />
+
+            :
+
+            <div className="todo-image">
+              <img src={Reactimage} className='logo' />
+            </div>
+        }
+
+
+
       </div>
     </>
   )
