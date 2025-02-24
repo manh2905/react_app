@@ -95,3 +95,8 @@ button {
     display: flex;
     justify-content: space-between;
 }
+
+.todo-button {
+    display: flex;
+    gap: 10px;
+}

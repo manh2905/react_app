@@ -7,10 +7,13 @@ import { useState } from 'react';
 const App = () => {
 
   const [todoList, setTodoList] = useState([
-    // { id: 1, name: "learn react" },
-    // { id: 2, name: "play game" }
+
   ])
 
+  const deleteTodo = (id) => {
+    const newTodo = todoList.filter((item, index) => item.id !== id);
+    setTodoList(newTodo);
+  }
 
 
   const addNewTodo = (name) => {
@@ -36,6 +39,7 @@ const App = () => {
           todoList.length > 0 ?
             <TodoData
               todoList={todoList}
+              deleteTodo={deleteTodo}
             />
 
             :
@@ -44,8 +48,6 @@ const App = () => {
               <img src={Reactimage} className='logo' />
             </div>
         }
-
-
 
       </div>
     </>
