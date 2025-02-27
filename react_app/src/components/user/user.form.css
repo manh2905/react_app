@@ -1,0 +1,8 @@
+.user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: auto;
+    margin-top: 3px;
+    margin-bottom: 20px
+}
