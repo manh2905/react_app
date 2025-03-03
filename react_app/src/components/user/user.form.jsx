@@ -1,6 +1,8 @@
-import { Input } from 'antd';
+import { Input, notification } from 'antd';
 import { Button, Flex } from 'antd';
 import { useState } from 'react';
+import { createUserAPI } from '../../services/api.service';
+
 
 const UserForm = () => {
     const [fullName, setFullName] = useState("");
@@ -8,8 +10,15 @@ const UserForm = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
 
-    const HandleClickBtn = () => {
-        console.log(fullName)
+    const HandleClickBtn = async () => {
+        const res = await createUserAPI(fullName, email, password, phone);
+        if (res.data) {
+            notification.success({
+                message: "create user",
+                description: "tao user thanh cong"
+            })
+        }
+        console.log(res);
     }
 
     return (
