@@ -1,4 +1,4 @@
-import { Button, Input, notification } from 'antd';
+import { Button, Flex, Input, notification, Modal } from 'antd';
 import { useState } from 'react';
 import { createUserAPI } from '../../services/api.service';
 
@@ -9,18 +9,18 @@ const UserForm = () => {
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const HandleClickBtn = async () => {
+
+    const HandleSubmitBtn = async () => {
+
         const res = await createUserAPI(fullName, email, password, phone);
-        // debugger;
         if (res.data) {
             notification.success({
                 message: "create user",
                 description: "tao user thanh cong"
             })
-
-
-
+            setIsModalOpen(false);
         }
         else {
             notification.error({
@@ -33,42 +33,54 @@ const UserForm = () => {
 
     return (
         <div className="user-form" style={{ margin: '20px 0' }}>
-            <div style={{ display: "flex", gap: '15px', flexDirection: 'column' }}>
-                <div>
 
-                    <span>FullName</span>
-                    <Input
-                        onChange={(event) => { setFullName(event.target.value) }}
-                        value={fullName}
-                    />
-                </div>
-                <div>
-                    <span>Email</span>
-                    <Input
-                        onChange={(event) => { setEmail(event.target.value) }}
-                        value={email}
-                    />
-                </div>
-                <div>
-                    <span>Password</span>
-                    <Input.Password
-                        onChange={(event) => { setPassword(event.target.value) }}
-                        value={password}
-                    />
-                </div>
-                <div>
-                    <span>Phone Number</span>
-                    <Input
-                        onChange={(event) => { setPhone(event.target.value) }}
-                        value={phone}
-                    />
-                </div>
-                <div>
-                    <Button
-                        onClick={HandleClickBtn}
-                        type="primary">Create </Button>
-                </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <h3>Table User</h3>
+                <Button
+                    onClick={() => setIsModalOpen(true)}
+                    type="primary">Create </Button>
             </div>
+            <Modal
+                title="Create User  "
+                open={isModalOpen}
+                onOk={() => HandleSubmitBtn()}
+                onCancel={() => setIsModalOpen(false)}
+                maskClosable={false}
+                okText={"Create"}
+            >
+                <div style={{ display: "flex", gap: '15px', flexDirection: 'column' }}>
+                    <div>
+
+                        <span>FullName</span>
+                        <Input
+                            onChange={(event) => { setFullName(event.target.value) }}
+                            value={fullName}
+                        />
+                    </div>
+                    <div>
+                        <span>Email</span>
+                        <Input
+                            onChange={(event) => { setEmail(event.target.value) }}
+                            value={email}
+                        />
+                    </div>
+                    <div>
+                        <span>Password</span>
+                        <Input.Password
+                            onChange={(event) => { setPassword(event.target.value) }}
+                            value={password}
+                        />
+                    </div>
+                    <div>
+                        <span>Phone Number</span>
+                        <Input
+                            onChange={(event) => { setPhone(event.target.value) }}
+                            value={phone}
+                        />
+                    </div>
+
+                </div>
+            </Modal>
         </div>
     )
 }

@@ -5,9 +5,7 @@ import { useEffect, useState } from 'react';
 
 const UserTable = () => {
 
-    const [dataUsers, setDataUsers] = useState([
-        {}
-    ]);
+    const [dataUsers, setDataUsers] = useState([]);
 
     useEffect(() => {
         loadUser();
