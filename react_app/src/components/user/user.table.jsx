@@ -1,12 +1,20 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Space, Table, Tag } from 'antd';
 import UpdateUserModal from './update.user.modal';
+import { use, useState } from 'react';
+import ViewUserDetail from './view.user.detail';
 
 
 
 const UserTable = (props) => {
 
-    const { dataUsers } = props;
+    const { dataUsers, loadUser } = props;
+
+    const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+    const [dataUpdate, setDataUpdate] = useState(null);
+
+    const [isModalViewUserOpen, setIsModalViewUserOpen] = useState(false);
+    const [dataView, setDataView] = useState(null);
 
 
     const columns = [
@@ -16,7 +24,11 @@ const UserTable = (props) => {
             render: (_, record) => {
                 return (
                     <>
-                        <a href="#">{record._id}</a>
+
+                        <a href="#" onClick={() => {
+                            setDataView(record)
+                            setIsModalViewUserOpen(true);
+                        }}>{record._id}</a>
                     </>
 
                 )
@@ -40,7 +52,13 @@ const UserTable = (props) => {
             render: (_, record) => (
                 <div style={{ display: "flex", gap: "20px" }}>
 
-                    <EditOutlined style={{ cursor: "pointer" }} />
+                    <EditOutlined
+                        style={{ cursor: "pointer" }}
+                        onClick={() => {
+                            setDataUpdate(record);
+                            setIsModalUpdateOpen(true);
+                        }}
+                    />
                     <DeleteOutlined style={{ cursor: "pointer" }} />
                 </div>
 
@@ -56,7 +74,20 @@ const UserTable = (props) => {
     return (
         <>
             <Table columns={columns} dataSource={dataUsers} rowKey={"_id"} />
-            <UpdateUserModal />
+            <UpdateUserModal
+                isModalUpdateOpen={isModalUpdateOpen}
+                setIsModalUpdateOpen={setIsModalUpdateOpen}
+                dataUpdate={dataUpdate}
+                setDataUpdate={setDataUpdate}
+                loadUser={loadUser}
+            />
+            <ViewUserDetail
+                isModalViewUserOpen={isModalViewUserOpen}
+                setIsModalViewUserOpen={setIsModalViewUserOpen}
+                dataView={dataView}
+                setDataView={setDataView}
+
+            />
 
         </>
     )
