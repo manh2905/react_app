@@ -1,5 +1,5 @@
 import { Popconfirm, notification } from "antd";
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from '@ant-design/icons';
 import { deleteUserAPI } from "../../services/api.service";
 
 

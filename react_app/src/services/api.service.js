@@ -23,9 +23,6 @@ const updateUserAPI = (_id, fullName, phone) => {
 
 const deleteUserAPI = (_id) => {
     const URL_BACKEND = `/api/v1/user/${_id}`
-    const data = {
-        _id: _id,
-    }
     return axios.delete(URL_BACKEND)
 }
 

@@ -1,7 +1,7 @@
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Space, Table, Tag } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
+import { Table } from 'antd';
 import UpdateUserModal from './update.user.modal';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import ViewUserDetail from './view.user.detail';
 import DeleteUserModal from './delete.user.modal';
 
@@ -17,7 +17,7 @@ const UserTable = (props) => {
     const [isModalViewUserOpen, setIsModalViewUserOpen] = useState(false);
     const [dataView, setDataView] = useState(null);
 
-    const [dataDelete, setDataDelete] = useState(null);
+
 
 
     const columns = [
