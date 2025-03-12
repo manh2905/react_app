@@ -3,6 +3,7 @@ import { Space, Table, Tag } from 'antd';
 import UpdateUserModal from './update.user.modal';
 import { use, useState } from 'react';
 import ViewUserDetail from './view.user.detail';
+import DeleteUserModal from './delete.user.modal';
 
 
 
@@ -15,6 +16,8 @@ const UserTable = (props) => {
 
     const [isModalViewUserOpen, setIsModalViewUserOpen] = useState(false);
     const [dataView, setDataView] = useState(null);
+
+    const [dataDelete, setDataDelete] = useState(null);
 
 
     const columns = [
@@ -53,13 +56,16 @@ const UserTable = (props) => {
                 <div style={{ display: "flex", gap: "20px" }}>
 
                     <EditOutlined
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color: "yellow" }}
                         onClick={() => {
                             setDataUpdate(record);
                             setIsModalUpdateOpen(true);
                         }}
                     />
-                    <DeleteOutlined style={{ cursor: "pointer" }} />
+                    <DeleteUserModal
+                        loadUser={loadUser}
+                        record={record}
+                    />
                 </div>
 
             ),

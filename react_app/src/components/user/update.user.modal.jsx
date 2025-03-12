@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Flex, Input, notification, Modal } from 'antd';
+import { Button, Flex, Input, notification, Modal, Alert } from 'antd';
 import { createUserAPI, updateUserAPI } from "../../services/api.service";
 
 
@@ -25,7 +25,7 @@ const UpdateUserModal = (props) => {
         if (res.data) {
             notification.success({
                 message: "update user",
-                description: "cap nhat user thanh cong"
+                description: "cap nhat user thanh cong",
             })
             resetAndCloseModal();
             await loadUser();
@@ -35,6 +35,7 @@ const UpdateUserModal = (props) => {
                 message: "loi cap nhat user",
                 description: JSON.stringify(res.message)
             })
+            alert(JSON.stringify(res.message))
         }
 
     }
